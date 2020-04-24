@@ -156,9 +156,9 @@ public class SwiftSpeechToTextPlugin: NSObject, FlutterPlugin {
     }
     
     fileprivate func setupListeningSound() {
-        listeningSound = loadSound("assets/sounds/speech_to_text_listening.m4r")
-        successSound = loadSound("assets/sounds/speech_to_text_stop.m4r")
-        cancelSound = loadSound("assets/sounds/speech_to_text_cancel.m4r")
+        listeningSound = loadSound("sounds/speech_to_text_listening.m4r")
+        successSound = loadSound("sounds/speech_to_text_stop.m4r")
+        cancelSound = loadSound("sounds/speech_to_text_cancel.m4r")
     }
     
     fileprivate func loadSound( _ assetPath: String ) -> AVAudioPlayer? {
