@@ -157,7 +157,6 @@ public class SwiftSpeechToTextPlugin: NSObject, FlutterPlugin {
     
     fileprivate func setupListeningSound() {
         listeningSound = loadSound("assets/sounds/speech_to_text_listening.m4r")
-        listeningSound?.delegate = self
         successSound = loadSound("assets/sounds/speech_to_text_stop.m4r")
         cancelSound = loadSound("assets/sounds/speech_to_text_cancel.m4r")
     }
@@ -249,11 +248,11 @@ public class SwiftSpeechToTextPlugin: NSObject, FlutterPlugin {
             return
         }
         do {
+            listeningSound?.play()
             returnPartialResults = partialResults
             setupRecognizerForLocale(locale: getLocale(localeStr))
             rememberedAudioCategory = self.audioSession.category
             try self.audioSession.setCategory(AVAudioSession.Category.playAndRecord)
-            listeningSound?.play()
             try self.audioSession.setMode(AVAudioSession.Mode.measurement)
             try self.audioSession.setActive(true, options: .notifyOthersOnDeactivation)
             let inputNode = self.audioEngine.inputNode
