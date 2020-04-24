@@ -171,7 +171,7 @@ public class SwiftSpeechToTextPlugin: NSObject, FlutterPlugin {
             let soundUrl = URL(fileURLWithPath: soundPath )
             do {
                 player = try AVAudioPlayer(contentsOf: soundUrl )
-    		player.prepareToPlay()
+    		player?.prepareToPlay()
             } catch {
                 // no audio
             }
